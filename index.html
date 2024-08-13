@@ -17,38 +17,41 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-6 mx-auto">
-                <h1 class="text-center mb-4 animate__animated animate__fadeInDown">Resort Pricing Calculator</h1>
+                <h1 class="text-center mb-4">Resort Pricing Calculator</h1>
                 <form id="pricing-form">
                     <div class="mb-3">
                         <label for="resort" class="form-label"><i class="fas fa-map-marker-alt"></i> Resort Name:</label>
-                        <select class="form-select" id="resort" required></select>
+                        <select class="form-select" id="resort" required>
+                            <option value="" disabled selected>Select a resort</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="room-size" class="form-label"><i class="fas fa-bed"></i> Room Size:</label>
-                        <select class="form-select" id="room-size" required></select>
+                        <select class="form-select" id="room-size" required>
+                            <option value="" disabled selected>Select a room size</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="ownership-type" class="form-label"><i class="fas fa-user-check"></i> Ownership Type:</label>
-                        <select class="form-select" id="ownership-type" required></select>
+                        <select class="form-select" id="ownership-type" required>
+                            <option value="" disabled selected>Select an ownership type</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="sale-price" class="form-label"><i class="fas fa-dollar-sign"></i> Sale Price:</label>
-                        <select class="form-select" id="sale-price" required></select>
+                        <select class="form-select" id="sale-price" required>
+                            <option value="" disabled selected>Select a sale price</option>
+                        </select>
                     </div>
                 </form>
-                <div id="result" class="mt-4 animate__animated animate__fadeInUp">
+                <div id="result" class="mt-4">
                     <h2 class="text-center">Financial Details</h2>
                     <div class="bg-light p-3 border rounded">
-                        <p id="considerations" class="mb-2"><strong>Considerations:</strong> </p>
-                        <p id="downpayment" class="mb-2"><strong>Downpayment:</strong> </p>
-                        <p id="amount-financed" class="mb-2"><strong>Amount Financed:</strong> </p>
-                        <p id="payment-terms" class="mb-2"><strong>Payment Terms:</strong> </p>
-                        <p id="maintenance-fee" class="mb-2"><strong>Maintenance Fee:</strong> </p>
-                    </div>
-                </div>
-                <div id="loading" class="text-center mt-4" style="display: none;">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                        <p id="considerations" class="mb-2"><strong>Considerations:</strong></p>
+                        <p id="downpayment" class="mb-2"><strong>Downpayment:</strong></p>
+                        <p id="amount-financed" class="mb-2"><strong>Amount Financed:</strong></p>
+                        <p id="payment-terms" class="mb-2"><strong>Payment Terms:</strong></p>
+                        <p id="maintenance-fee" class="mb-2"><strong>Maintenance Fee:</strong></p>
                     </div>
                 </div>
             </div>
