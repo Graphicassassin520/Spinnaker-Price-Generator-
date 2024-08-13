@@ -34,10 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate the resort dropdown
     const resorts = [...new Set(data.map(item => item.resort))];
     resorts.forEach(resort => {
-        const option = document.createElement('option');
-        option.value = resort;
-        option.textContent = resort;
-        resortSelect.appendChild(option);
+        if (resort) {  // Ensure the resort value is not null or undefined
+            const option = document.createElement('option');
+            option.value = resort;
+            option.textContent = resort;
+            resortSelect.appendChild(option);
+        }
     });
 
     // Update dependent dropdowns when resort is selected
@@ -71,10 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
         roomSizeSelect.innerHTML = '';
         const roomSizes = [...new Set(data.filter(item => item.resort === resort).map(item => item.roomSize))];
         roomSizes.forEach(size => {
-            const option = document.createElement('option');
-            option.value = size;
-            option.textContent = size;
-            roomSizeSelect.appendChild(option);
+            if (size) {
+                const option = document.createElement('option');
+                option.value = size;
+                option.textContent = size;
+                roomSizeSelect.appendChild(option);
+            }
         });
         roomSizeSelect.dispatchEvent(new Event('change'));
     }
@@ -83,10 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ownershipTypeSelect.innerHTML = '';
         const ownershipTypes = [...new Set(data.filter(item => item.resort === resort && item.roomSize === roomSize).map(item => item.ownershipType))];
         ownershipTypes.forEach(type => {
-            const option = document.createElement('option');
-            option.value = type;
-            option.textContent = type;
-            ownershipTypeSelect.appendChild(option);
+            if (type) {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                ownershipTypeSelect.appendChild(option);
+            }
         });
         ownershipTypeSelect.dispatchEvent(new Event('change'));
     }
@@ -95,13 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         salePriceSelect.innerHTML = '';
         const salePrices = [...new Set(data.filter(item => item.resort === resort && item.roomSize === roomSize && item.ownershipType === ownershipType).map(item => item.salePrice))];
         salePrices.forEach(price => {
-            const option = document.createElement('option');
-            option.value = price;
-            option.textContent = price;
-            salePriceSelect.appendChild(option);
-        });
-        salePriceSelect.dispatchEvent(new Event('change'));
-    }
-
-    function updateFinancialDetails(resort, roomSize, ownershipType, salePrice) {
-        const selectedData = data.find(item => item.resort === resort && item.roomSize === roomSize && item.ownership
+            if (price) {
+                const option = document.createElement('option');
+                option
