@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Populate the resort dropdown
     const resorts = [...new Set(data.map(item => item.resort))];
-
-    console.log("Resorts:", resorts); // Debugging step
-
     resorts.forEach(resort => {
         const option = document.createElement('option');
         option.value = resort;
         option.textContent = resort;
         resortSelect.appendChild(option);
     });
+
+    // Debugging: Check if resorts were added
+    console.log("Populated resorts:", resorts);
 
     resortSelect.addEventListener('change', () => {
         const selectedResort = resortSelect.value;
@@ -52,9 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateRoomSizeOptions(resort) {
         roomSizeSelect.innerHTML = '<option value="" disabled selected>Select a room size</option>';
         const roomSizes = [...new Set(data.filter(item => item.resort === resort).map(item => item.roomSize))];
-
-        console.log("Room Sizes for " + resort + ":", roomSizes); // Debugging step
-
         roomSizes.forEach(size => {
             const option = document.createElement('option');
             option.value = size;
@@ -66,9 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateOwnershipTypeOptions(resort, roomSize) {
         ownershipTypeSelect.innerHTML = '<option value="" disabled selected>Select an ownership type</option>';
         const ownershipTypes = [...new Set(data.filter(item => item.resort === resort && item.roomSize === roomSize).map(item => item.ownershipType))];
-
-        console.log("Ownership Types for " + resort + " " + roomSize + ":", ownershipTypes); // Debugging step
-
         ownershipTypes.forEach(type => {
             const option = document.createElement('option');
             option.value = type;
@@ -80,11 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateSalePriceOptions(resort, roomSize, ownershipType) {
         salePriceSelect.innerHTML = '<option value="" disabled selected>Select a sale price</option>';
         const salePrices = [...new Set(data.filter(item => item.resort === resort && item.roomSize === roomSize && item.ownershipType === ownershipType).map(item => item.salePrice))];
-
-        console.log("Sale Prices for " + resort + " " + roomSize + " " + ownershipType + ":", salePrices); // Debugging step
-
         salePrices.forEach(price => {
             const option = document.createElement('option');
             option.value = price;
             option.textContent = price;
-            salePriceSelect.append
+            salePriceSelect.appendChild(option);
+        });
+    }
+
+    function updateFinancialDetails(resort, roomSize, ownershipType, salePrice) {
+        const selectedData = data.find(item => item.resort === resort && item.roomSize === roomSize && item.ownershipType === ownershipType && item.salePrice === salePrice);
+        
+        if (selectedData) {
+            document.getElementById('considerations').textContent = `Considerations: N/A`;
+            document.getElementById('downpayment').textContent = `Downpayment: N/A`;
+            document.getElementById('amount-financed').textContent = `Amount Financed: N/A`;
+            document.getElementById('payment-terms').textContent = `Payment Terms: N/A`;
+            document.getElementById('maintenance-fee').textContent = `Maintenance Fee: N/A`;
+        }
+    }
+});
