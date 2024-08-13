@@ -1,11 +1,4 @@
-I apologize for the oversight. Let me add the missing information for the **Royal Floridian South Even/Odd Float**. Below is the complete JavaScript code, including all entries from the PDF:
-
-### 3. **JavaScript (`script.js`)**
-
-```javascript
-// Data extracted from the PDF
-const data = [
-    // Royal Floridian North
+  // Royal Floridian North
     {
         resort: 'Royal Floridian North',
         roomSize: 'Studio',
